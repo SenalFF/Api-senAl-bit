@@ -1,0 +1,22 @@
+<!-- Only JS section shown here -->
+<script>
+  async function download() {
+    const input = document.getElementById('videoInput').value.trim();
+    let api = input.includes('tiktok.com') ? '/api/tiktok/download' : '/api/youtube/download';
+
+    const res = await fetch(api, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ input })
+    });
+
+    const data = await res.json();
+    const result = document.getElementById('result');
+
+    if (data.success) {
+      result.innerHTML = `<a href="${data.url}" download>⬇️ Click here to download</a>`;
+    } else {
+      result.innerHTML = `<span style="color:red;">❌ ${data.error}</span>`;
+    }
+  }
+</script

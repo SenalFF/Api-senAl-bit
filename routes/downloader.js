@@ -1,6 +1,5 @@
 const request = require("request");
-const router = require("express").Router();
-const youtubeDl = require("youtube-dl");
+const router = require("express").Router()
 const tiktokScraper = require("tiktok-scraper");
 
 function toSupportedFormat(url) {
